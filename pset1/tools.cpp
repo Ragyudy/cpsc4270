@@ -1,4 +1,4 @@
-/ -*- mode:c++; tab-width:4 -*-
+// -*- mode:c++; tab-width:4 -*-
 // File: tools.cpp the tools library.
 // Assorted utility routines for use in C++ programs.
 // -------------------------------------------------------------------
@@ -8,7 +8,7 @@
 // -------------------------------------------------------------------
 // Used to discard the remainder of the current input line
 istream& cleanline(istream& is) {
-return is.ignore(numeric_limits<streamsize>::max(), '\n');
+    return is.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 // -------------------------------------------------------------------
 // Used to flush an input stream buffer
@@ -18,8 +18,8 @@ istream& flush(istream& is) { return is.seekg(0, ios::end); }
 // Reset formatting style from fixed or scientific back to default.
 // Use: cout <<fixed <<x <<general <<y;
 ostream& general(ostream& os) {
-os.unsetf(ios::floatfield);
-return os;
+    os.unsetf(ios::floatfield);
+    return os;
 }
 // -------------------------------------------------------------------
 // Routine output labeling. ------------------------------------------

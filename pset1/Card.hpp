@@ -14,11 +14,11 @@
 class Card {
 private:
     // long names for spots and suits
-    static constexpr const char* spotLbl[13] = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
-    static constexpr const char* suitLbl[13] = {"spades", "hearts", "diamonds", "clubs"};
+    static constexpr array<const char*, 13> spotLbl = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+    static constexpr array<const char*, 4> suitLbl = {"spades", "hearts", "diamonds", "clubs"};
     // single letter names for spots and suits
-    static constexpr const char* spotLetter = "A23456789TJQK";
-    static constexpr const char* suitLetter = "SHDC";
+    static constexpr array<char, 13> spotLetter = {'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'};
+    static constexpr array<char, 4> suitLetter = {'S', 'H', 'D', 'C'};
 
 public:
     // index of last spot or suit
@@ -30,7 +30,12 @@ private:
     int suit;
 
 public:
-    Card(int sp, int su) : spot(sp), suit(su) {}
+    // default ctor with no arguments 
+    // (important for instantiating deck)
+    Card() noexcept : spot(0), suit(0) {}
+    
+    // this ctor validates arguments (check Card.cpp)
+    Card(int sp, int su);
     string shortName() const;
     string longName() const;
     ostream& print(ostream& out) const;
