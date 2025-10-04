@@ -2,7 +2,7 @@ CPSC 4270 – Programming Assignment 1
 NetID: gy236
 
 This submission contains:
-- Card.hpp / Card.cpp: Modified to use 0-based indexing, removed "bad", switched to std::array and .at() for runtime checking.
+- Card.hpp / Card.cpp: Modified to use 0-based indexing, removed "bad", switched to array and .at() for runtime checking.
 - Deck.hpp / Deck.cpp: Implements a Spider deck of 104 cards, shuffle(), and print() to output 13 cards per line.
 - main.cpp: Test driver. Reads seed from command line, prints initial deck, shuffles, and prints shuffled deck. Uses banner() and bye() from tools library.
 - tools.hpp / tools.cpp: Provided utility library (unchanged except included here for completeness).
