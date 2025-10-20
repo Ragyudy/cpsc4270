@@ -1,5 +1,6 @@
 // -*- mode:c++; tab-width:4 -*-
 // modified September 2011; July 2022; September 2024; September 2025
+// modified by Grady Yu on Oct 7th, 2025
 // file: tools.hpp ---------------------------------------------------
 // Header file for the tools library.
 // -------------------------------------------------------------------
@@ -7,7 +8,7 @@
 // Please enter your own name and class.
 // -------------------------------------------------------------------
 #pragma once
-#define NAME "Michael Fischer"
+#define NAME "Grady Yu"
 #define CLASS "CPSC 4270/5270"
 #include <algorithm>
 #include <fstream>
