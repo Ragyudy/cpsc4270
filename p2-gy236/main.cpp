@@ -11,6 +11,8 @@
 //
 // Usage: cardtest num_decks outfile
 #include "Deck.hpp"
+#include "Pile.hpp"
+#include "Board.hpp"
 #include "tools.hpp"
 // --------------------------------------------------------------
 int main(int argc, const char* argv[]) {
@@ -22,16 +24,13 @@ int main(int argc, const char* argv[]) {
     }
 
     int seed = atoi(argv[1]);
-    cout << "Seed: " << seed << endl;
     srand(seed);
-
     Deck deck;
-    cout << "Initial deck:" << endl;
-    deck.print(cout);
-
     deck.shuffle();
-    cout << "Shuffled deck:" << endl;
-    deck.print(cout);
+    
+    cout << "Spider Board:" << endl;
+    Board board(deck);
+    board.print(cout);
     
     bye();
     return 0;
