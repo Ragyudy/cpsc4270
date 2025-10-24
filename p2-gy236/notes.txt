@@ -1,4 +1,4 @@
-CPSC 4270 – Programming Assignment 1
+CPSC 4270 – Programming Assignment 2
 NetID: gy236
 
 This submission contains:
