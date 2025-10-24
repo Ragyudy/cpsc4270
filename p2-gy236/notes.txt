@@ -11,6 +11,7 @@ This submission contains:
 
 Command to compile and clean executable files:
 make, make clean
+I tried making a command that takes in a target executable "testboard" and a seed input, but settled on just keeping it simple as this program is simple enough.
 
 User just needs to provide a seed as a command line argument to run the program.
 e.g., ./main 123
