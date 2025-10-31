@@ -1,7 +1,9 @@
 // Deck.cpp
 // Spider-board
 //
-// Created by Grady Yu on 9/30/25. Modified by Grady Yu on 10/23/25.
+// Created by Grady Yu on 9/30/25.
+// Modified by Grady Yu on 10/23/25.
+// Modified by Grady Yu on 10/30/25.
 
 #include "Card.hpp"
 #include "Deck.hpp"
@@ -42,4 +44,8 @@ Card Deck::deal() {
         throw runtime_error("Cannot deal from empty deck");
     }
     return cards[top++];
+}
+
+int Deck::remaining() const {
+    return NUMCARDS - top;
 }

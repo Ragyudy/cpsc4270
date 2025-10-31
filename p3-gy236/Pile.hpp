@@ -27,6 +27,10 @@ public:
     int size() const;
     bool isEmpty() const;
     string getCardAt(int position) const; 
+    int countVisible() const;
+    bool revealTop();
+    Pile removeTopK(int k);
+    void pushFromPile(Pile&& other);
 };
 
 #endif 

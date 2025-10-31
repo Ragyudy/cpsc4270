@@ -7,28 +7,17 @@ This submission contains:
 - Pile.hpp / Pile.cpp: Implements a Pile class, keeping track of the number of cards face down and the number of cards in the pile.
 - Board.hpp / Board.cpp: Implements a Board class that consists of 10 piles and a stock deck.
 - main.cpp: Test driver. Reads seed from command line, shuffles the deck, and prints the board. Uses banner() and bye() from tools library.
+- main.cpp: Runtest driver. Reads script file (first line seed), then executes commands.
 - tools.hpp / tools.cpp: Provided utility library (unchanged except included here for completeness).
 
 Command to compile and clean executable files:
 make, make clean
 I tried making a command that takes in a target executable "testboard" and a seed input, but settled on just keeping it simple as this program is simple enough.
 
-User just needs to provide a seed as a command line argument to run the program.
-e.g., ./main 123
+Build and run:
+make
+./runtest test_basic.txt > out_basic.output 
+./runtest test_errors.txt > out_errors.output 2> err_errors.output // 2> err_errors.output captures stderr
 
-test output:
-----------------------------------------------------------------
-        Grady Yu
-        CPSC 4270/5270
-        Thu Oct 23 2025 22:28:55
-----------------------------------------------------------------
-Spider Board:
-   1  2  3  4  5  6  7  8  9  10  
-   -- -- -- -- -- -- -- -- -- -- 
-   -- -- -- -- -- -- -- -- -- -- 
-   -- -- -- -- -- -- -- -- -- -- 
-   -- -- -- -- -- -- -- -- -- -- 
-   -- -- -- -- AH 2S 8S KS JC 6D 
-   QD 8H 8H TD                   
+You can omit "> out_basic.txt" if you want to print result to terminal. 
 
-Normal termination.

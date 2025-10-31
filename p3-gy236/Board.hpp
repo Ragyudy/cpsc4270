@@ -11,17 +11,27 @@
 #include "Deck.hpp"
 #include "Pile.hpp"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Board {
 private:
-    Pile tableau[10];  
+    Pile stk[10];  
     Deck stock;        
+    vector<Pile> foundation; 
     
 public:
     Board(Deck& deck);
     void print(ostream& out) const;
+    // upcoming API for pset3
+    void moveCards(int k, Pile& source, Pile& target);
+    void dealRow();
+    void revealCard(Pile& pile);
+    void removeFullSuit(Pile& pile);
+    bool isWon() const;
+    Pile& pileAt(int idx) { return stk[idx]; }
+    const Pile& pileAt(int idx) const { return stk[idx]; }
 };
 
 #endif

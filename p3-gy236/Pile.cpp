@@ -60,3 +60,47 @@ string Pile::getCardAt(int position) const {
         return cards[position].shortName();  
     }
 }
+
+int Pile::countVisible() const {
+    return cardCount - faceDownCount;
+}
+
+bool Pile::revealTop() {
+    if (cardCount == 0) {
+        throw runtime_error("can't reveal top of empty pile");
+    }
+    if (faceDownCount == cardCount) {
+        faceDownCount--;
+        return true;
+    }
+    throw runtime_error("Top card already visible");
+}
+
+Pile Pile::removeTopK(int k) {
+    if (k < 0) {
+        throw runtime_error("can't remove a negative number of cards");
+    }
+    if (k > countVisible()) {
+        throw runtime_error("not enough visible cards to remove");
+    }
+    Pile result;
+    int start = cardCount - k;
+    for (int i = start; i < cardCount; i++) {
+        result.addCard(cards[i], true);
+    }
+    cardCount -= k;
+    return result;
+}
+
+void Pile::pushFromPile(Pile&& other) {
+    for (int i = 0; i < other.faceDownCount; i++) {
+        addCard(other.cards[i], false);
+    }
+    
+    for (int i = other.faceDownCount; i < other.cardCount; i++) {
+        addCard(other.cards[i], true);
+    }
+
+    other.cardCount = 0;
+    other.faceDownCount = 0;
+}

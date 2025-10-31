@@ -2,8 +2,9 @@
 // Deck.hpp
 // Spider-board
 //
-// Created by Grady Yu on 9/30/25. Modified by Grady Yu on 10/23/25
-//
+// Created by Grady Yu on 9/30/25. 
+// Modified by Grady Yu on 10/23/25.
+// Modified by Grady Yu on 10/30/25.
 
 #ifndef Deck_hpp
 #define Deck_hpp
@@ -24,6 +25,7 @@ public:
     void shuffle();
     void print(ostream& out) const;
     Card deal(); 
+    int remaining() const; 
 };
 
 #endif

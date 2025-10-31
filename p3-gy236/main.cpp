@@ -1,37 +1,86 @@
 //
-// cardtest unit test
-//
-// Created by Michael Fischer on 9/15/25.
-//
-// This is a unit test of the Card class constructor
-// and its public shortName() function.
-// It does not test the longName() function.
-// It creates a specified number of decks of cards
-// and write the result to an output file.
-//
-// Usage: cardtest num_decks outfile
+// runtest driver for pset3
 #include "Deck.hpp"
 #include "Pile.hpp"
 #include "Board.hpp"
 #include "tools.hpp"
-// --------------------------------------------------------------
+#include <fstream>
+#include <sstream>
+
 int main(int argc, const char* argv[]) {
     banner();
-    // Process command line arg
     if (argc != 2) {
-        cerr << "Usage: " << argv[0] << " seed" << endl;
+        cerr << "Usage: " << argv[0] << " scriptfile" << endl;
         return 1;
     }
 
-    int seed = atoi(argv[1]);
-    srand(seed);
+    ifstream fin(argv[1]);
+    if (!fin) {
+        cerr << "cannot open script file" << endl;
+        return 1;
+    }
+
+    string line;
+    // first line: seed
+    if (!getline(fin, line)) {
+        cerr << "empty script" << endl;
+        return 1;
+    }
+    {
+        istringstream ss(line);
+        int seed = 0;
+        ss >> seed;
+        srand(seed);
+    }
+
     Deck deck;
     deck.shuffle();
-    
-    cout << "Spider Board:" << endl;
-    Board board(deck);
-    board.print(cout);
-    
-    bye();
+    Board bd(deck);
+
+    while (getline(fin, line)) {
+        // skip blanks and comments
+        bool allspace = true;
+        for (char ch : line) { if (!isspace(static_cast<unsigned char>(ch))) { allspace = false; break; } }
+        if (allspace) continue;
+        if (!line.empty() && line[0] == '#') continue;
+
+        istringstream ss(line);
+        string cmd;
+        ss >> cmd;
+        if (cmd == "moveCards") {
+            int n, a, b;
+            ss >> n >> a >> b;
+            try {
+                bd.moveCards(n, bd.pileAt(a), bd.pileAt(b));
+            } catch (const exception& e) {
+                cerr << e.what() << endl;
+            }
+        } else if (cmd == "dealRow") {
+            try {
+                bd.dealRow();
+            } catch (const exception& e) {
+                cerr << e.what() << endl;
+            }
+        } else if (cmd == "revealCard") {
+            int a; ss >> a;
+            try {
+                bd.revealCard(bd.pileAt(a));
+            } catch (const exception& e) {
+                cerr << e.what() << endl;
+            }
+        } else if (cmd == "removeFullSuit") {
+            int a; ss >> a;
+            try {
+                bd.removeFullSuit(bd.pileAt(a));
+            } catch (const exception& e) {
+                cerr << e.what() << endl;
+            }
+        } else if (cmd == "isWon") {
+            cout << (bd.isWon() ? "true" : "false") << endl;
+        } else if (cmd == "print") {
+            bd.print(cout);
+        }
+    }
+
     return 0;
 }
