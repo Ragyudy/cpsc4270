@@ -12,12 +12,13 @@ This submission contains:
 
 Command to compile and clean executable files:
 make, make clean
-I tried making a command that takes in a target executable "testboard" and a seed input, but settled on just keeping it simple as this program is simple enough.
 
 Build and run:
 make
-./runtest test_basic.txt > out_basic.output 
-./runtest test_errors.txt > out_errors.output 2> err_errors.output // 2> err_errors.output captures stderr
+./runtest [TEST_SCRIPT_NAME].txt
 
-You can omit "> out_basic.txt" if you want to print result to terminal. 
+Example if you want to save the output to a file:
+./runtest tests/test_errors.txt &> out_errors.output // &> to redirect both stdout and stderr to the same file
+
+Sample output and test files are in the outputs and tests folder respectively.
 

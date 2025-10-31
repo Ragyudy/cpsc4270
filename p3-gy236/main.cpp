@@ -40,18 +40,23 @@ int main(int argc, const char* argv[]) {
     while (getline(fin, line)) {
         // skip blanks and comments
         bool allspace = true;
-        for (char ch : line) { if (!isspace(static_cast<unsigned char>(ch))) { allspace = false; break; } }
+        for (char ch : line) { 
+            if (!isspace(static_cast<unsigned char>(ch))) { 
+                allspace = false; break; 
+            } 
+        }
         if (allspace) continue;
         if (!line.empty() && line[0] == '#') continue;
 
         istringstream ss(line);
         string cmd;
         ss >> cmd;
+        cout << "> " << line << endl;
         if (cmd == "moveCards") {
             int n, a, b;
             ss >> n >> a >> b;
             try {
-                bd.moveCards(n, bd.pileAt(a), bd.pileAt(b));
+                bd.moveCards(n, bd.pileAt(a - 1), bd.pileAt(b - 1));
             } catch (const exception& e) {
                 cerr << e.what() << endl;
             }
@@ -64,14 +69,14 @@ int main(int argc, const char* argv[]) {
         } else if (cmd == "revealCard") {
             int a; ss >> a;
             try {
-                bd.revealCard(bd.pileAt(a));
+                bd.revealCard(bd.pileAt(a - 1));
             } catch (const exception& e) {
                 cerr << e.what() << endl;
             }
         } else if (cmd == "removeFullSuit") {
             int a; ss >> a;
             try {
-                bd.removeFullSuit(bd.pileAt(a));
+                bd.removeFullSuit(bd.pileAt(a - 1));
             } catch (const exception& e) {
                 cerr << e.what() << endl;
             }
