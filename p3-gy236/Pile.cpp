@@ -73,7 +73,7 @@ bool Pile::revealTop() {
         faceDownCount--;
         return true;
     }
-    throw runtime_error("Top card already visible");
+    throw runtime_error("top card already visible");
 }
 
 Pile Pile::removeTopK(int k) {

@@ -6,6 +6,6 @@ $(TARGET): main.cpp Deck.cpp Card.cpp Pile.cpp Board.cpp tools.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 clean:
-	rm -f $(TARGET) outputs/out_*.output 
+	rm -f $(TARGET) 
 
 .PHONY: clean

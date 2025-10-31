@@ -18,7 +18,7 @@ make
 ./runtest [TEST_SCRIPT_NAME].txt
 
 Example if you want to save the output to a file:
-./runtest tests/test_errors.txt &> out_errors.output // &> to redirect both stdout and stderr to the same file
+./runtest tests/test_errors.txt &> out_errors.txt // &> to redirect both stdout and stderr to the same file
 
 Sample output and test files are in the outputs and tests folder respectively.
 
