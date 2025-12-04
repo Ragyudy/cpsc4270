@@ -1,0 +1,8 @@
+12345
+# basic script: seed then a few commands
+print
+isWon
+dealRow
+print
+isWon
+

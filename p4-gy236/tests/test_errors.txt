@@ -1,0 +1,17 @@
+999
+# exercises error paths; errors print to stderr
+moveCards 5 0 1
+revealCard 0
+removeFullSuit 0
+dealRow
+dealRow
+dealRow
+dealRow
+dealRow
+dealRow
+dealRow
+dealRow
+dealRow
+dealRow
+dealRow  # likely runs stock out and errors
+

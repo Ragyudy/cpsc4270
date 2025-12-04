@@ -1,0 +1,85 @@
+
+----------------------------------------------------------------
+	Grady Yu
+	CPSC 4270/5270
+	Fri Oct 31 2025	18:35:11
+----------------------------------------------------------------
+> moveCards 1 1 7
+> revealCard 1
+> revealCard 1
+top card already visible
+> print
+   1  2  3  4  5  6  7  8  9  10  
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   TD -- -- -- QD AC KD KC 8D 4D 
+      JS 7S 2H       7D          
+> moveCards 2 1 6
+source pile has less than k visible cards
+> print
+   1  2  3  4  5  6  7  8  9  10  
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   TD -- -- -- QD AC KD KC 8D 4D 
+      JS 7S 2H       7D          
+> dealRow
+> print
+   1  2  3  4  5  6  7  8  9  10  
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   TD -- -- -- QD AC KD KC 8D 4D 
+   QC JS 7S 2H 5D 6C 7D 5H 6H KS 
+      4H 9C 7H       5H          
+> moveCards 4 1 6
+source pile has less than k visible cards
+> print
+   1  2  3  4  5  6  7  8  9  10  
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   TD -- -- -- QD AC KD KC 8D 4D 
+   QC JS 7S 2H 5D 6C 7D 5H 6H KS 
+      4H 9C 7H       5H          
+> removeFullSuit 6
+pile has less than 13 visible cards
+> print
+   1  2  3  4  5  6  7  8  9  10  
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   TD -- -- -- QD AC KD KC 8D 4D 
+   QC JS 7S 2H 5D 6C 7D 5H 6H KS 
+      4H 9C 7H       5H          
+> dealRow
+> removeFullSuit 6
+pile has less than 13 visible cards
+> print
+   1  2  3  4  5  6  7  8  9  10  
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   TD -- -- -- QD AC KD KC 8D 4D 
+   QC JS 7S 2H 5D 6C 7D 5H 6H KS 
+   3H 4H 9C 7H KC 6D 5H 9D 3D 2D 
+      2C 8C QD       QS          
+> isWon
+false
+> print
+   1  2  3  4  5  6  7  8  9  10  
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   -- -- -- -- -- -- -- -- -- -- 
+   TD -- -- -- QD AC KD KC 8D 4D 
+   QC JS 7S 2H 5D 6C 7D 5H 6H KS 
+   3H 4H 9C 7H KC 6D 5H 9D 3D 2D 
+      2C 8C QD       QS          

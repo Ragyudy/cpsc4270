@@ -1,0 +1,24 @@
+CPSC 4270 – Programming Assignment 3
+NetID: gy236
+
+This submission contains:
+- Card.hpp / Card.cpp: Modified to use 0-based indexing, removed "bad", switched to array and .at() for runtime checking.
+- Deck.hpp / Deck.cpp: Implements a Spider deck of 104 cards, shuffle(), and print() to output 13 cards per line. Modified to include a deal() function. 
+- Pile.hpp / Pile.cpp: Implements a Pile class, keeping track of the number of cards face down and the number of cards in the pile.
+- Board.hpp / Board.cpp: Implements a Board class that consists of 10 piles and a stock deck.
+- main.cpp: Test driver. Reads seed from command line, shuffles the deck, and prints the board. Uses banner() and bye() from tools library.
+- main.cpp: Runtest driver. Reads script file (first line seed), then executes commands.
+- tools.hpp / tools.cpp: Provided utility library (unchanged except included here for completeness).
+
+Command to compile and clean executable files:
+make, make clean
+
+Build and run:
+make
+./runtest [TEST_SCRIPT_NAME].txt
+
+Example if you want to save the output to a file:
+./runtest tests/test_errors.txt &> out_errors.txt // &> to redirect both stdout and stderr to the same file
+
+Sample output and test files are in the outputs and tests folder respectively.
+

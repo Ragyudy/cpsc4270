@@ -1,0 +1,22 @@
+print
+moveCards 1 1 7
+# making cards visible to see what will be moved
+revealCard 1
+revealCard 1
+print
+# move those cards just revealed
+moveCards 2 1 6
+print
+dealRow
+print
+moveCards 4 1 6
+print
+# this will fail because pile 6 has only 12 cards
+removeFullSuit 6
+print
+# put in another card and try again
+dealRow
+removeFullSuit 6
+print
+isWon
+print
