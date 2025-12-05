@@ -45,4 +45,4 @@ inline ostream& operator<<(ostream& out, Card& cd) {
     return cd.print(out);
 }
 
-#endif /* Card_hpp */
+#endif 
