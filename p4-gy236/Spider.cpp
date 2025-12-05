@@ -56,9 +56,11 @@ void Spider::play() {
                     break;
             }
         } catch (const exception& e) {
-            cerr << e.what() << endl;
-            if (cmd == 'B' || cmd == 'Q') {
-                return;
+            if (cmd == 'Q') {
+                return;  
+            }
+            if (cmd != 'B') {
+                cerr << e.what() << endl;
             }
         }
     }
