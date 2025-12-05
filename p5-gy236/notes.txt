@@ -1,0 +1,18 @@
+CPSC 4270 – Programming Assignment 4
+NetID: gy236
+
+This submission contains:
+- Card.hpp / Card.cpp: Modified to use 0-based indexing, removed "bad", switched to array and .at() for runtime checking. Added getSpot() and getSuit() getters.
+- Deck.hpp / Deck.cpp: Implements a Spider deck of 104 cards, shuffle(), and print() to output 13 cards per line. Modified to include a deal() function. 
+- Pile.hpp / Pile.cpp: Implements a Pile class, keeping track of the number of cards face down and the number of cards in the pile. Added run checking methods (isRun, getBottomOfRun, canAcceptRun, getTopCard) and auto-reveal functionality.
+- Board.hpp / Board.cpp: Implements a Board class that consists of 10 piles and a stock deck. Added moving functionality and automatic actions (turnOverCards, removeCompletedSuits).
+- Spider.hpp / Spider.cpp: Interactive controller class that handles player commands (B, D, M, Q) and coordinates game flow.
+- main.cpp: Reads seed from command line, creates Spider instance, and calls play().
+- tools.hpp / tools.cpp: Provided utility library (unchanged except included here for completeness).
+
+Command to compile and clean executable files:
+make, make clean
+
+Build and run:
+make
+./spider <seed>
