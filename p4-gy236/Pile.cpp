@@ -77,12 +77,9 @@ bool Pile::revealTop() {
 }
 
 Pile Pile::removeTopK(int k) {
-    if (k < 0) {
-        throw runtime_error("can't remove a negative number of cards");
-    }
-    if (k > countVisible()) {
-        throw runtime_error("not enough visible cards to remove");
-    }
+    if (k <= 0) throw runtime_error("can't remove zero or negative number of cards");
+    if (k > countVisible()) throw runtime_error("not enough visible cards to remove");
+    
     Pile result;
     int start = cardCount - k;
     for (int i = start; i < cardCount; i++) {

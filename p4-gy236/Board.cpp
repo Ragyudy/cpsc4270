@@ -40,7 +40,7 @@ Board::Board(Deck& deck) {
 }
 
 void Board::moveCards(int k, Pile& source, Pile& target) {
-    if (k < 0) throw runtime_error("cannot move a negative number of cards");
+    if (k <= 0) throw runtime_error("cannot move zero or negative number of cards");
     if (source.countVisible() < k) throw runtime_error("source pile has less than k visible cards");
     Pile moved = source.removeTopK(k);
     target.pushFromPile(std::move(moved));

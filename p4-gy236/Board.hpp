@@ -24,7 +24,6 @@ private:
 public:
     Board(Deck& deck);
     void print(ostream& out) const;
-    // upcoming API for pset3
     void moveCards(int k, Pile& source, Pile& target);
     void dealRow();
     void revealCard(Pile& pile);
