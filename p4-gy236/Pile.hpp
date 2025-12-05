@@ -31,6 +31,11 @@ public:
     bool revealTop();
     Pile removeTopK(int k);
     void pushFromPile(Pile&& other);
+    
+    bool isRun(int k) const;
+    Card getBottomOfRun(int k) const;
+    bool canAcceptRun(const Card& bottomCard) const;
+    Card getTopCard() const;
 };
 
 #endif 

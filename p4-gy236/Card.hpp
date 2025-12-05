@@ -3,7 +3,7 @@
 // Spider-board
 //
 // Created by Michael Fischer on 9/11/25.
-// Modified by Grady Yu on 9/30/25.
+// Modified by Grady Yu on 11/30/25.
 //
 #ifndef Card_hpp
 #define Card_hpp
@@ -39,6 +39,8 @@ public:
     string shortName() const;
     string longName() const;
     ostream& print(ostream& out) const;
+    int getSpot() const { return spot; }
+    int getSuit() const { return suit; }
 };
 
 inline ostream& operator<<(ostream& out, Card& cd) {

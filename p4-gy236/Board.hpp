@@ -31,6 +31,9 @@ public:
     bool isWon() const;
     Pile& pileAt(int idx) { return stk[idx]; }
     const Pile& pileAt(int idx) const { return stk[idx]; }
+    
+    void turnOverCards();
+    void removeCompletedSuits();
 };
 
 #endif

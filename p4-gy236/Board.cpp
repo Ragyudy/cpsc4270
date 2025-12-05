@@ -42,8 +42,16 @@ Board::Board(Deck& deck) {
 void Board::moveCards(int k, Pile& source, Pile& target) {
     if (k <= 0) throw runtime_error("cannot move zero or negative number of cards");
     if (source.countVisible() < k) throw runtime_error("source pile has less than k visible cards");
+    if (!source.isRun(k)) throw runtime_error("top k cards do not form a run");
+    
+    Card bottomCard = source.getBottomOfRun(k);
+    if (!target.canAcceptRun(bottomCard)) throw runtime_error("destination pile cannot accept this run");
+    
     Pile moved = source.removeTopK(k);
     target.pushFromPile(std::move(moved));
+    
+    turnOverCards();
+    removeCompletedSuits();
 }
 
 void Board::dealRow() {
@@ -52,6 +60,9 @@ void Board::dealRow() {
         Card c = stock.deal();
         stk[i].addCard(c, true);
     }
+    
+    turnOverCards();
+    removeCompletedSuits();
 }
 
 void Board::revealCard(Pile& pile) {
@@ -76,15 +87,10 @@ bool Board::isWon() const {
 }
 
 void Board::print(ostream& out) const {
-    // print foundation first if not empty
-    if (!foundation.empty()) {
-        out << "Foundation: ";
-        for (size_t i = 0; i < foundation.size(); i++) {
-            out << "[";
-            foundation[i].print(out);
-            out << "]";
-            if (i + 1 < foundation.size()) out << " ";
-        }
+    int foundationCount = foundation.size();
+    if (foundationCount > 0) {
+        out << "Foundation: " << foundationCount << " completed suit";
+        if (foundationCount != 1) out << "s";
         out << endl;
     }
 
@@ -109,5 +115,32 @@ void Board::print(ostream& out) const {
             out << card << " ";
         }
         out << endl;
+    }
+}
+
+void Board::turnOverCards() {
+    for (int i = 0; i < 10; i++) {
+        if (!stk[i].isEmpty()) {
+            try {
+                stk[i].revealTop();
+            } catch (...) {
+            }
+        }
+    }
+}
+
+void Board::removeCompletedSuits() {
+    bool foundSuit = true;
+    while (foundSuit) {
+        foundSuit = false;
+        for (int i = 0; i < 10; i++) {
+            if (stk[i].countVisible() >= 13) {
+                if (stk[i].isRun(13)) {
+                    removeFullSuit(stk[i]);
+                    foundSuit = true;
+                    break;  
+                }
+            }
+        }
     }
 }
