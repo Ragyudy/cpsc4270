@@ -126,11 +126,12 @@ bool Pile::isRun(int k) const {
     
     for (int i = start; i < cardCount - 1; i++) {
         int currentSpot = cards[i].getSpot();
-        int nextSpot = cards[i + 1].getSpot();
-        int currentSuit = cards[i].getSuit();
-        
+        int nextSpot = cards[i + 1].getSpot();        
         if (nextSpot != currentSpot - 1) return false;
-        if (currentSuit != firstSuit) return false;
+    }
+    
+    for (int i = start + 1; i < cardCount; i++) {
+        if (cards[i].getSuit() != firstSuit) return false;
     }
     
     return true;
